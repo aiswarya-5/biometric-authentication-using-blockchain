@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{53E29AC3-7B38-4436-BB01-DC31268BF97D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BlockchainWithFingerprint</RootNamespace>
+    <AssemblyName>BlockchainWithFingerprint</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>D:\blockchain with fingerprint Orginal\blockchain with fingerprint\blockchain\blockchain\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseConnection.cs" />
+    <Compile Include="Block.cs" />
+    <Compile Include="Blockchain.cs" />
+    <Compile Include="Crypto.cs" />
+    <Compile Include="FingerMatching.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FingerMatching.Designer.cs">
+      <DependentUpon>FingerMatching.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hyperledger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hyperledger.Designer.cs">
+      <DependentUpon>Hyperledger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Instructions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Instructions.Designer.cs">
+      <DependentUpon>Instructions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MinerBlockChain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MinerBlockChain.Designer.cs">
+      <DependentUpon>MinerBlockChain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MinerWordPuzzle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MinerWordPuzzle.Designer.cs">
+      <DependentUpon>MinerWordPuzzle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Miner_AddBlock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Miner_AddBlock.Designer.cs">
+      <DependentUpon>Miner_AddBlock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Miner_edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Miner_edit.Designer.cs">
+      <DependentUpon>Miner_edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Miner_Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Miner_Home.Designer.cs">
+      <DependentUpon>Miner_Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Miner_Profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Miner_Profile.Designer.cs">
+      <DependentUpon>Miner_Profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Miner_Registration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Miner_Registration.Designer.cs">
+      <DependentUpon>Miner_Registration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Miner_Puzzle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Miner_Puzzle.Designer.cs">
+      <DependentUpon>Miner_Puzzle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Miner_Base.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Miner_Base.Designer.cs">
+      <DependentUpon>Miner_Base.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Miner_ViewRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Miner_ViewRequest.Designer.cs">
+      <DependentUpon>Miner_ViewRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notary_approve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notary_approve.Designer.cs">
+      <DependentUpon>Notary_approve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notary_Base.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notary_Base.Designer.cs">
+      <DependentUpon>Notary_Base.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notary_DeleteUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notary_DeleteUser.Designer.cs">
+      <DependentUpon>Notary_DeleteUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notary_home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notary_home.Designer.cs">
+      <DependentUpon>Notary_home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notary_status.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notary_status.Designer.cs">
+      <DependentUpon>Notary_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notary_ViewBlock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notary_ViewBlock.Designer.cs">
+      <DependentUpon>Notary_ViewBlock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notary_ViewData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notary_ViewData.Designer.cs">
+      <DependentUpon>Notary_ViewData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrientationImage.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User_Edit.Designer.cs">
+      <DependentUpon>User_Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User_Profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User_Profile.Designer.cs">
+      <DependentUpon>User_Profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User_status.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User_status.Designer.cs">
+      <DependentUpon>User_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User_AddData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User_AddData.Designer.cs">
+      <DependentUpon>User_AddData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User_DataEncryption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User_DataEncryption.Designer.cs">
+      <DependentUpon>User_DataEncryption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User_DataEncryption2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User_DataEncryption2.Designer.cs">
+      <DependentUpon>User_DataEncryption2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User_Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User_Home.Designer.cs">
+      <DependentUpon>User_Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="user_registration1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user_registration1.Designer.cs">
+      <DependentUpon>user_registration1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="user_registration2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user_registration2.Designer.cs">
+      <DependentUpon>user_registration2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="user_registration3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user_registration3.Designer.cs">
+      <DependentUpon>user_registration3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User_viewData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User_viewData.Designer.cs">
+      <DependentUpon>User_viewData.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FingerMatching.resx">
+      <DependentUpon>FingerMatching.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hyperledger.resx">
+      <DependentUpon>Hyperledger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Instructions.resx">
+      <DependentUpon>Instructions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MinerBlockChain.resx">
+      <DependentUpon>MinerBlockChain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MinerWordPuzzle.resx">
+      <DependentUpon>MinerWordPuzzle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Miner_AddBlock.resx">
+      <DependentUpon>Miner_AddBlock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Miner_edit.resx">
+      <DependentUpon>Miner_edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Miner_Home.resx">
+      <DependentUpon>Miner_Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Miner_Profile.resx">
+      <DependentUpon>Miner_Profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Miner_Registration.resx">
+      <DependentUpon>Miner_Registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Miner_Puzzle.resx">
+      <DependentUpon>Miner_Puzzle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Miner_Base.resx">
+      <DependentUpon>Miner_Base.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Miner_ViewRequest.resx">
+      <DependentUpon>Miner_ViewRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notary_approve.resx">
+      <DependentUpon>Notary_approve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notary_Base.resx">
+      <DependentUpon>Notary_Base.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notary_DeleteUser.resx">
+      <DependentUpon>Notary_DeleteUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notary_home.resx">
+      <DependentUpon>Notary_home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notary_status.resx">
+      <DependentUpon>Notary_status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notary_ViewBlock.resx">
+      <DependentUpon>Notary_ViewBlock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notary_ViewData.resx">
+      <DependentUpon>Notary_ViewData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_Edit.resx">
+      <DependentUpon>User_Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_Profile.resx">
+      <DependentUpon>User_Profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_status.resx">
+      <DependentUpon>User_status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_AddData.resx">
+      <DependentUpon>User_AddData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_DataEncryption.resx">
+      <DependentUpon>User_DataEncryption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_DataEncryption2.resx">
+      <DependentUpon>User_DataEncryption2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_Home.resx">
+      <DependentUpon>User_Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user_registration1.resx">
+      <DependentUpon>user_registration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user_registration2.resx">
+      <DependentUpon>user_registration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user_registration3.resx">
+      <DependentUpon>user_registration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_viewData.resx">
+      <DependentUpon>User_viewData.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Notary.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notaryhome1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notaryhome2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\approve.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grey.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hyper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hyperi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hyperledgernow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view data.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\51.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\adddata.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\adddata1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Security-Blog-Post-768x401.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hgh.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hgh1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dfg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fgfg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\keys.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fgfmk.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DigitalTransformation1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\biometrics-blockchain-technology-illustration-of-digital-fingerprint-security-for-cryptocurrency_33099-345.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EFR.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xxxxxx.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\socialShareImage.img_.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Corda-Blog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dfd.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gfg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minerbase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\abc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\af914adcdd377a5478c675bb9050c0de.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ll5h3lgtabdu9onzb90d.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\df.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Notary-2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\not1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notaryadd.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\not.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\statusright.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\statusleft.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aaaaaaaaa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\noww.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\noww111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\areg1right.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\areg1left.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\123.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\adddata2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\456.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hyperledger-.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\miner_icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\n-icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrows.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\attention.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
