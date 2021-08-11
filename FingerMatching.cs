@@ -10,15 +10,25 @@ using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
+using PatternRecognition.FingerprintRecognition.Core;
+using PatternRecognition.FingerprintRecognition.FeatureExtractors;
+using PatternRecognition.FingerprintRecognition.Matchers;
 
-namespace BlockchainWithFingerprint
+namespace My_Project_Final
 {
     public partial class FingerMatching : Form
     {
         public FingerMatching()
         {
             InitializeComponent();
+            
         }
+
+        public string score;
+        public string qry;
+        public string temp;
+
+
         protected override CreateParams CreateParams
         {
             get
@@ -36,10 +46,10 @@ namespace BlockchainWithFingerprint
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string path = "E:\\";
-
+            string path = Application.StartupPath + "\\new_fingerprints";
+           
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Image Files|*.png;...";
+            openFileDialog1.Filter = "Image Files|*.tif;...";
             if (Directory.Exists(path))
             {
                 openFileDialog1.InitialDirectory = path;
@@ -48,110 +58,84 @@ namespace BlockchainWithFingerprint
 
             if (result == DialogResult.OK)
             {
+                string fileName;
+                fileName = openFileDialog1.FileName;
+                temp = fileName;
+                fingerprint.ImageLocation = temp;
 
-                fingerprint.ImageLocation = openFileDialog1.FileName;
-                Program.keyImage1 = (Bitmap)Image.FromFile(openFileDialog1.FileName);
+                //fingerprint.ImageLocation = openFileDialog1.FileName;
+                //Program.keyImage1 = (Bitmap)Image.FromFile(openFileDialog1.FileName);
 
             }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string kmatch = extractkey(Program.keyImage1);
-            if (kmatch == Program.userid)
+
+            qry = Application.StartupPath + "\\users\\" + Program.userid + "\\fingerprint.tif";
+           // MessageBox.Show(Program.userid);
+            
+            if (fingerprint.Image != null)
             {
-                string kstruct = Managekey(kmatch);
-                Program.kkeys = kstruct;
-                MessageBox.Show("Success Full Match FingerPrint");
-               // MessageBox.Show(" Success Full Match FingerPrint: Your Key Structure: " + kstruct);
-                User_Home obj = new User_Home();
-                ActiveForm.Hide();
-                obj.Show();
+               
+                match(qry, temp);
             }
             else
             {
-                MessageBox.Show("Invalid FingerPrint");
+                MessageBox.Show("Please choose two fingerprints!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        public static int reverseBits(int n)
+        private Bitmap Change_Resolution(string file)
         {
-            int result = 0;
-
-            for (int i = 0; i < 8; i++)
+            using (Bitmap bitmap = (Bitmap)Image.FromFile(file))
             {
-                result = result * 2 + n % 2;
-
-                n /= 2;
-            }
-
-            return result;
-        }
-        public string extractkey(Bitmap bmp)
-        {
-            int colorUnitIndex = 0;
-            int charValue = 0;
-
-
-            string extractedText = String.Empty;
-
-
-            for (int i = 0; i < bmp.Height; i++)
-            {
-
-                for (int j = 0; j < bmp.Width; j++)
+                using (Bitmap newBitmap = new Bitmap(bitmap))
                 {
-                    Color pixel = bmp.GetPixel(j, i);
-
-
-                    for (int n = 0; n < 3; n++)
-                    {
-                        switch (colorUnitIndex % 3)
-                        {
-                            case 0:
-                                {
-
-                                    charValue = charValue * 2 + pixel.R % 2;
-                                }
-                                break;
-                            case 1:
-                                {
-                                    charValue = charValue * 2 + pixel.G % 2;
-                                }
-                                break;
-                            case 2:
-                                {
-                                    charValue = charValue * 2 + pixel.B % 2;
-                                }
-                                break;
-                        }
-
-                        colorUnitIndex++;
-
-
-                        if (colorUnitIndex % 8 == 0)
-                        {
-
-                            charValue = reverseBits(charValue);
-
-
-                            if (charValue == 0)
-                            {
-                                return extractedText;
-                            }
-
-
-                            char c = (char)charValue;
-
-
-                            extractedText += c.ToString();
-                        }
-                    }
+                    newBitmap.SetResolution(500, 500);
+                    return newBitmap;
                 }
             }
-
-            return extractedText;
         }
+        private void match(string query, string template)
+        {
+            Change_Resolution(query);
+            Change_Resolution(template);
+
+            var fingerprintImg1 = ImageLoader.LoadImage(query);
+            var fingerprintImg2 = ImageLoader.LoadImage(template);
+
+            var featExtractor = new PNFeatureExtractor() { MtiaExtractor = new Ratha1995MinutiaeExtractor() };
+            var features1 = featExtractor.ExtractFeatures(fingerprintImg1);
+            var features2 = featExtractor.ExtractFeatures(fingerprintImg2);
+
+            var matcher = new PN();
+            double similarity = matcher.Match(features1, features2);
+
+
+            score = similarity.ToString("0.000");
+           // MessageBox.Show("Similarity " + similarity.ToString("0.000"), "Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (similarity >= 70)
+            {
+                MessageBox.Show("Success Full Match FingerPrint");
+                string kstruct = Managekey(Program.userid);
+                Program.kkeys = kstruct;
+                //MessageBox.Show(kstruct);
+                User_Home obj = new User_Home();
+                ActiveForm.Hide();
+                obj.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("No Matching Person found");
+                Login obj = new Login();
+                ActiveForm.Hide();
+                obj.Show();
+            }
+
+        }
+        
         public static string Managekey(string inputString)
         {
             SHA512 sha512 = SHA512Managed.Create();
@@ -169,5 +153,12 @@ namespace BlockchainWithFingerprint
             }
             return result.ToString();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Login obj = new Login();
+            obj.Show();
+        }
     }
 }
+
