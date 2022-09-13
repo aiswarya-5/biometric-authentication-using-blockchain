@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
-https://github.com/AfinMuhammed/HTML
 namespace BlockchainWithFingerprint
 {
     class BaseConnection
